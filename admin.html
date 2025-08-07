@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الإدارة | منصة التعليم - الكيمياء</title>
+    <meta name="description" content="لوحة تحكم المدير في منصة التعليم للكيمياء">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">لوحة تحكم الإدارة</a>
+                <ul class="nav-menu">
+                    <li><a href="#" onclick="loadAdminContent('students')">الطلاب</a></li>
+                    <li><a href="#" onclick="loadAdminContent('courses')">المقررات</a></li>
+                    <li><a href="#" onclick="loadAdminContent('reports')">التقارير</a></li>
+                    <li><a href="index.html">الموقع الرئيسي</a></li>
+                    <li><a href="#" class="logout-btn">تسجيل الخروج</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <main style="margin-top: 100px; min-height: calc(100vh - 100px);">
+        <div class="container">
+            <!-- ترحيب بالمدير -->
+            <section class="section">
+                <div class="card" style="background: var(--gradient-primary); color: var(--text-light); text-align: center;">
+                    <h1>مرحباً بك في لوحة التحكم، <span id="userName">المدير</span></h1>
+                    <p>نوع الحساب: <span id="userRole">مدير النظام</span></p>
+                    <p>آخر تسجيل دخول: <span id="loginTime">الآن</span></p>
+                    <div class="mt-3">
+                        <button onclick="loadAdminContent('students')" class="btn btn-outline">إدارة الطلاب</button>
+                        <button onclick="loadAdminContent('reports')" class="btn btn-outline">عرض التقارير</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- الإحصائيات العامة -->
+            <section class="section">
+                <h2 class="section-title">نظرة عامة على النظام</h2>
+                <div class="grid grid-4">
+                    <div class="card text-center">
+                        <div style="font-size: 2.5rem; color: var(--primary-color); font-weight: bold;">156</div>
+                        <h4>إجمالي الطلاب</h4>
+                        <p style="color: var(--primary-color); font-size: 0.9rem;">↗️ +12 هذا الأسبوع</p>
+                    </div>
+                    
+                    <div class="card text-center">
+                        <div style="font-size: 2.5rem; color: var(--secondary-color); font-weight: bold;">8</div>
+                        <h4>المقررات النشطة</h4>
+                        <p style="color: var(--secondary-color); font-size: 0.9rem;">📚 جميعها متاحة</p>
+                    </div>
+                    
+                    <div class="card text-center">
+                        <div style="font-size: 2.5rem; color: var(--accent-color); font-weight: bold;">94%</div>
+                        <h4>معدل النجاح</h4>
+                        <p style="color: var(--accent-color); font-size: 0.9rem;">🎯 هدف ممتاز</p>
+                    </div>
+                    
+                    <div class="card text-center">
+                        <div style="font-size: 2.5rem; color: var(--primary-color); font-weight: bold;">87%</div>
+                        <h4>معدل الحضور</h4>
+                        <p style="color: var(--primary-color); font-size: 0.9rem;">📈 في تحسن</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قائمة الإدارة السريعة -->
+            <section class="section">
+                <h2 class="section-title">أدوات الإدارة</h2>
+                <div class="grid grid-3">
+                    <div class="card" style="cursor: pointer;" onclick="loadAdminContent('students')">
+                        <div style="font-size: 3rem; color: var(--primary-color); text-align: center; margin-bottom: 1rem;">👥</div>
+                        <h3 class="card-title">إدارة الطلاب</h3>
+                        <p class="card-text">عرض وإدارة حسابات الطلاب، متابعة التقدم الأكاديمي</p>
+                        <div class="mt-3">
+                            <span class="btn btn-primary">إدارة الطلاب</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="cursor: pointer;" onclick="loadAdminContent('courses')">
+                        <div style="font-size: 3rem; color: var(--secondary-color); text-align: center; margin-bottom: 1rem;">📖</div>
+                        <h3 class="card-title">إدارة المقررات</h3>
+                        <p class="card-text">إضافة وتعديل المقررات، إدارة المحتوى التعليمي</p>
+                        <div class="mt-3">
+                            <span class="btn btn-secondary">إدارة المقررات</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="cursor: pointer;" onclick="loadAdminContent('reports')">
+                        <div style="font-size: 3rem; color: var(--accent-color); text-align: center; margin-bottom: 1rem;">📊</div>
+                        <h3 class="card-title">التقارير والإحصائيات</h3>
+                        <p class="card-text">تقارير مفصلة عن الأداء والإحصائيات العامة</p>
+                        <div class="mt-3">
+                            <span class="btn" style="background: var(--accent-color); color: white;">عرض التقارير</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- منطقة المحتوى الديناميكي -->
+            <section class="section">
+                <div id="adminContent">
+                    <div class="card text-center">
+                        <h3 class="card-title">مرحباً بك في لوحة تحكم الإدارة</h3>
+                        <p class="card-text">اختر من الأدوات أعلاه لإدارة النظام</p>
+                        <div class="mt-3">
+                            <button onclick="loadAdminContent('students')" class="btn btn-primary">ابدأ بإدارة الطلاب</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- الإجراءات السريعة -->
+            <section class="section" style="background-color: var(--background-light); padding: 2rem; border-radius: var(--border-radius);">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">⚡ الإجراءات السريعة</h3>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h4>📝 إضافة طالب جديد</h4>
+                        <p>إنشاء حساب جديد للطلاب</p>
+                        <button class="btn btn-primary mt-2" onclick="showAlert('هذه الميزة ستكون متاحة قريباً', 'info')">إضافة طالب</button>
+                    </div>
+                    <div class="card">
+                        <h4>📚 إضافة مقرر جديد</h4>
+                        <p>إنشاء مقرر تعليمي جديد</p>
+                        <button class="btn btn-secondary mt-2" onclick="showAlert('هذه الميزة ستكون متاحة قريباً', 'info')">إضافة مقرر</button>
+                    </div>
+                    <div class="card">
+                        <h4>📧 إرسال إشعار عام</h4>
+                        <p>إرسال رسالة لجميع الطلاب</p>
+                        <button class="btn" style="background: var(--accent-color); color: white;" onclick="showAlert('هذه الميزة ستكون متاحة قريباً', 'info')">إرسال إشعار</button>
+                    </div>
+                    <div class="card">
+                        <h4">📊 تصدير التقارير</h4>
+                        <p>تحميل التقارير بصيغة PDF</p>
+                        <button class="btn btn-primary mt-2" onclick="showAlert('هذه الميزة ستكون متاحة قريباً', 'info')">تصدير</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- معلومات النظام -->
+            <section class="section">
+                <div class="card">
+                    <h3 class="card-title">معلومات النظام</h3>
+                    <div class="grid grid-2">
+                        <div>
+                            <p><strong>إصدار النظام:</strong> 2.1.0</p>
+                            <p><strong>آخر تحديث:</strong> 2025/01/07</p>
+                            <p><strong>حالة الخادم:</strong> <span style="color: green;">متصل ✅</span></p>
+                        </div>
+                        <div>
+                            <p><strong>مساحة التخزين:</strong> 75% مستخدمة</p>
+                            <p><strong>عدد المستخدمين النشطين:</strong> 142</p>
+                            <p><strong>وقت التشغيل:</strong> 99.9%</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2025 منصة التعليم - الكيمياء. لوحة تحكم الإدارة.</p>
+        </div>
+    </footer>
+
+    <!-- ربط ملف JavaScript -->
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // تهيئة قاعدة البيانات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', async function() {
+            // تهيئة قاعدة البيانات مع البيانات التجريبية
+            if (window.dbUtils) {
+                await window.dbUtils.initializeWithSampleData();
+                
+                // تحديث الإحصائيات بعد التهيئة
+                setTimeout(async () => {
+                    await updateAdminStats();
+                }, 1000);
+            }
+        });
+    </script>
+    
+    <!-- سكريبت خاص بصفحة الإدارة -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // حماية الصفحة - التأكد من صلاحيات الإدارة
+            if (!protectPage(['admin'])) {
+                return;
+            }
+            
+            // تحديث واجهة المستخدم
+            updateUserInterface();
+            
+            // تحميل المحتوى الافتراضي
+            setTimeout(() => {
+                loadAdminContent('students');
+            }, 1000);
+        });
+        
+        // وظيفة لعرض رسالة ترحيب للمدير
+        function showAdminWelcome() {
+            const currentUser = getCurrentUser();
+            if (currentUser && currentUser.role === 'admin') {
+                showAlert(`مرحباً ${currentUser.name}! لديك صلاحيات كاملة لإدارة النظام`, 'success');
+            }
+        }
+        
+        // عرض رسالة الترحيب بعد تحميل الصفحة
+        setTimeout(showAdminWelcome, 500);
+        
+        // وظائف إضافية للإدارة
+        function exportData(type) {
+            showAlert(`جاري تصدير بيانات ${type}...`, 'info');
+            // هنا يمكن إضافة منطق تصدير البيانات
+        }
+        
+        function sendNotification() {
+            showAlert('تم إرسال الإشعار لجميع الطلاب بنجاح', 'success');
+        }
+    </script>
+</body>
+</html>
+
