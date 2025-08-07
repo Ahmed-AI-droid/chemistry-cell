@@ -1,177 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة التعليم - الكيمياء | الصفحة الرئيسية</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="logo">منصة التعليم - الكيمياء</a>
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">الرئيسية</a></li>
-                    <li><a href="#features" class="nav-link">المميزات</a></li>
-                    <li><a href="#courses" class="nav-link">المقررات</a></li>
-                    <li><a href="#contact" class="nav-link">تواصل معنا</a></li>
-                    <li><a href="login.html" class="nav-link">تسجيل الدخول</a></li>
-                    <li class="user-menu" style="display: none;">
-                        <a href="#" class="nav-link user-name"></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="student.html">لوحة التحكم</a></li>
-                            <li><a href="#" class="logout-btn">تسجيل الخروج</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="hamburger" onclick="toggleMobileMenu()">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <!-- قسم البطل (Hero Section) -->
-        <section class="hero">
-            <div class="container text-center">
-                <h1>مستقبلك في الكيمياء يبدأ هنا</h1>
-                <p class="lead">انضم إلى منصتنا التعليمية المتطورة واحصل على شرح مبسط ونتائج مضمونة في مادة الكيمياء</p>
-                <a href="login.html" class="btn btn-primary btn-lg mt-4">ابدأ رحلتك التعليمية</a>
-                <a href="#features" class="btn btn-secondary btn-lg mt-4">اكتشف المزيد</a>
-            </div>
-        </section>
-
-        <!-- قسم المميزات (Features Section) -->
-        <section id="features" class="section features-section">
-            <div class="container">
-                <h2 class="section-title">لماذا تختار منصتنا؟</h2>
-                <p class="section-subtitle">نقدم لك تجربة تعليمية فريدة ومتكاملة</p>
-                <div class="grid grid-3">
-                    <div class="feature-card">
-                        <div class="feature-icon">📚</div>
-                        <h3 class="feature-title">محتوى تعليمي متنوع</h3>
-                        <p class="feature-description">فيديوهات تفاعلية، مذكرات مفصلة، وتمارين إلكترونية شاملة لجميع مواضيع الكيمياء</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">👨‍🏫</div>
-                        <h3 class="feature-title">متابعة فردية</h3>
-                        <p class="feature-description">نظام متقدم لتتبع تقدمك الأكاديمي وتحليل نقاط القوة والضعف لتحسين أدائك</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⏰</div>
-                        <h3 class="feature-title">مرونة في التعلم</h3>
-                        <p class="feature-description">تعلم في أي وقت ومن أي مكان بما يناسب جدولك الشخصي والدراسي</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3 class="feature-title">تمارين تفاعلية</h3>
-                        <p class="feature-description">مئات التمارين المتدرجة في الصعوبة مع تصحيح فوري وشرح مفصل للحلول</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3 class="feature-title">تقارير مفصلة</h3>
-                        <p class="feature-description">احصل على تقارير دورية عن تقدمك ونصائح مخصصة لتحسين مستواك</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🏆</div>
-                        <h3 class="feature-title">نتائج مضمونة</h3>
-                        <p class="feature-description">منهجية تعليمية مجربة ومثبتة الفعالية لضمان تحقيق أفضل النتائج</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- قسم المقررات (Courses Section) -->
-        <section id="courses" class="section courses-section">
-            <div class="container">
-                <h2 class="section-title">المقررات المتاحة</h2>
-                <p class="section-subtitle">اختر المقرر المناسب لمستواك الدراسي</p>
-                <div class="grid grid-2">
-                    <div class="course-card">
-                        <h3 class="course-title">الكيمياء العامة</h3>
-                        <p class="course-description">أساسيات الكيمياء، الذرة والجزيء، الروابط الكيميائية، والتفاعلات الأساسية</p>
-                        <ul class="course-features">
-                            <li>12 درس تفاعلي</li>
-                            <li>50+ تمرين متنوع</li>
-                            <li>3 امتحانات تجريبية</li>
-                            <li>شهادة إتمام</li>
-                        </ul>
-                        <a href="login.html" class="btn btn-primary mt-3">ابدأ الآن</a>
-                    </div>
-                    <div class="course-card">
-                        <h3 class="course-title">الكيمياء العضوية</h3>
-                        <p class="course-description">دراسة المركبات العضوية، التفاعلات العضوية، والتطبيقات العملية</p>
-                        <ul class="course-features">
-                            <li>15 درس متقدم</li>
-                            <li>75+ تمرين تطبيقي</li>
-                            <li>4 امتحانات شاملة</li>
-                            <li>مشاريع عملية</li>
-                        </ul>
-                        <a href="login.html" class="btn btn-primary mt-3">ابدأ الآن</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- قسم الإحصائيات (Stats Section) -->
-        <section class="section stats-section">
-            <div class="container text-center">
-                <h2 class="section-title">أرقام تتحدث عن نجاحنا</h2>
-                <div class="grid grid-4">
-                    <div class="stat-item">
-                        <div class="stat-number">1500+</div>
-                        <div class="stat-label">طالب مسجل</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">95%</div>
-                        <div class="stat-label">معدل النجاح</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">درس تفاعلي</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">دعم فني</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- قسم التواصل (Contact Section) -->
-        <section id="contact" class="section contact-section">
-            <div class="container">
-                <h2 class="section-title">تواصل معنا</h2>
-                <p class="section-subtitle">نحن هنا لمساعدتك في رحلتك التعليمية</p>
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>معلومات التواصل</h3>
-                        <p>📧 <strong>البريد الإلكتروني:</strong> info@chemistry-platform.com</p>
-                        <p>📱 <strong>الهاتف:</strong> +20 123 456 7890</p>
-                        <p>⏰ <strong>ساعات العمل:</strong> 9:00 ص - 9:00 م</p>
-                        <p>📍 <strong>العنوان:</strong> القاهرة، مصر</p>
-                    </div>
-                    <div class="contact-form">
-                        <h3>ابدا رحلتك التعليمية</h3>
-                        <p>انضم إلى آلاف الطلاب الذين حققوا نجاحاً باهراً معنا</p>
-                        <a href="login.html" class="btn btn-primary btn-lg">ابدأ الآن</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container text-center">
-            <p>&copy; 2025 منصة التعليم - الكيمياء. جميع الحقوق محفوظة.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
-
