@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الطالب | منصة التعليم - الكيمياء</title>
+    <meta name="description" content="لوحة تحكم الطالب في منصة التعليم للكيمياء">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">منصة التعليم - الكيمياء</a>
+                <ul class="nav-menu">
+                    <li><a href="#" onclick="loadContent('lessons')">الدروس</a></li>
+                    <li><a href="#" onclick="loadContent('exercises')">التمارين</a></li>
+                    <li><a href="#" onclick="loadContent('grades')">الدرجات</a></li>
+                    <li><a href="#" class="logout-btn">تسجيل الخروج</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <main style="margin-top: 100px; min-height: calc(100vh - 100px);">
+        <div class="container">
+            <!-- ترحيب بالطالب -->
+            <section class="section">
+                <div class="card" style="background: var(--gradient-primary); color: var(--text-light); text-align: center;">
+                    <h1>مرحباً بك، <span id="userName">الطالب العزيز</span></h1>
+                    <p>نوع الحساب: <span id="userRole">طالب</span></p>
+                    <p>آخر تسجيل دخول: <span id="loginTime">الآن</span></p>
+                    <div class="mt-3">
+                        <button onclick="loadContent('lessons')" class="btn btn-outline">ابدأ التعلم</button>
+                        <button onclick="loadContent('exercises')" class="btn btn-outline">حل التمارين</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- إحصائيات سريعة -->
+            <section class="section">
+                <h2 class="section-title">إحصائياتك السريعة</h2>
+                <div class="grid grid-4">
+                    <div class="card text-center">
+                        <div style="font-size: 2.5rem; color: var(--primary-color); font-weight: bold;">12</div>
+                        <h4>الدروس المكتملة</h4>
+                    </div>
+                    
+                    <div class="card text-center">
+                        <div style="font-size: 2.5rem; color: var(--secondary-color); font-weight: bold;">8</div>
+                        <h4>التمارين المحلولة</h4>
+                    </div>
+                    
+                    <div class="card text-center">
+                        <div style="font-size: 2.5rem; color: var(--accent-color); font-weight: bold;">88%</div>
+                        <h4>المعدل العام</h4>
+                    </div>
+                    
+                    <div class="card text-center">
+                        <div style="font-size: 2.5rem; color: var(--primary-color); font-weight: bold;">15</div>
+                        <h4>ساعات التعلم</h4>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قائمة التنقل السريع -->
+            <section class="section">
+                <h2 class="section-title">الوصول السريع</h2>
+                <div class="grid grid-3">
+                    <div class="card" style="cursor: pointer;" onclick="loadContent('lessons')">
+                        <div style="font-size: 3rem; color: var(--primary-color); text-align: center; margin-bottom: 1rem;">📚</div>
+                        <h3 class="card-title">الدروس التعليمية</h3>
+                        <p class="card-text">استكشف مكتبة شاملة من الدروس التفاعلية في الكيمياء</p>
+                        <div class="mt-3">
+                            <span class="btn btn-primary">تصفح الدروس</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="cursor: pointer;" onclick="loadContent('exercises')">
+                        <div style="font-size: 3rem; color: var(--secondary-color); text-align: center; margin-bottom: 1rem;">✏️</div>
+                        <h3 class="card-title">التمارين والاختبارات</h3>
+                        <p class="card-text">اختبر معلوماتك وطور مهاراتك من خلال تمارين متنوعة</p>
+                        <div class="mt-3">
+                            <span class="btn btn-secondary">ابدأ التمارين</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="cursor: pointer;" onclick="loadContent('grades')">
+                        <div style="font-size: 3rem; color: var(--accent-color); text-align: center; margin-bottom: 1rem;">📊</div>
+                        <h3 class="card-title">الدرجات والتقارير</h3>
+                        <p class="card-text">تابع تقدمك الأكاديمي واطلع على تقاريرك المفصلة</p>
+                        <div class="mt-3">
+                            <span class="btn" style="background: var(--accent-color); color: white;">عرض الدرجات</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- منطقة المحتوى الديناميكي -->
+            <section class="section">
+                <div id="contentArea">
+                    <div class="card text-center">
+                        <h3 class="card-title">مرحباً بك في لوحة التحكم</h3>
+                        <p class="card-text">اختر من القائمة أعلاه لبدء رحلتك التعليمية</p>
+                        <div class="mt-3">
+                            <button onclick="loadContent('lessons')" class="btn btn-primary">ابدأ بالدروس</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- نصائح وإرشادات -->
+            <section class="section" style="background-color: var(--background-light); padding: 2rem; border-radius: var(--border-radius);">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">💡 نصائح للنجاح</h3>
+                <div class="grid grid-2">
+                    <div>
+                        <h4>📅 نظم وقتك</h4>
+                        <p>خصص وقتاً يومياً للدراسة والمراجعة</p>
+                    </div>
+                    <div>
+                        <h4>🎯 ركز على الفهم</h4>
+                        <p>لا تكتفِ بالحفظ، بل اسعَ لفهم المفاهيم</p>
+                    </div>
+                    <div>
+                        <h4>✍️ مارس التمارين</h4>
+                        <p>الممارسة المستمرة تؤدي إلى الإتقان</p>
+                    </div>
+                    <div>
+                        <h4>❓ لا تتردد في السؤال</h4>
+                        <p>استفد من الدعم الفني المتاح 24/7</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2025 منصة التعليم - الكيمياء. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- ربط ملف JavaScript -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyDwsAzwMdFerJ8e-ycAYQ1KY_yHQFXdNOc",
+            authDomain: "chemistry-cell-f786f.firebaseapp.com",
+            projectId: "chemistry-cell-f786f",
+            storageBucket: "chemistry-cell-f786f.firebasestorage.app",
+            messagingSenderId: "354762741739",
+            appId: "1:354762741739:web:1aff842ea9902fe4236bae",
+            measurementId: "G-727WVZST21"
+        };
+        const app = initializeApp(firebaseConfig);
+    </script>
+    <script src="script.js"></script>
+    <script>
+        // تهيئة قاعدة البيانات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', async function() {
+            // تهيئة قاعدة البيانات مع البيانات التجريبية
+            if (window.dbUtils) {
+                await window.dbUtils.initializeWithSampleData();
+                
+                // تحديث الإحصائيات بعد التهيئة
+                setTimeout(async () => {
+                    await updateUserStats();
+                }, 1000);
+            }
+        });
+    </script>
+    
+    <!-- سكريبت خاص بصفحة الطلاب -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // حماية الصفحة - التأكد من تسجيل الدخول
+            if (!protectPage(['student', 'teacher'])) {
+                return;
+            }
+            
+            // تحديث واجهة المستخدم
+            updateUserInterface();
+            
+            // تحميل المحتوى الافتراضي
+            setTimeout(() => {
+                loadContent('lessons');
+            }, 1000);
+        });
+        
+        // وظيفة لعرض رسالة ترحيب
+        function showWelcomeMessage() {
+            const currentUser = getCurrentUser();
+            if (currentUser) {
+                showAlert(`أهلاً وسهلاً ${currentUser.name}! نتمنى لك تجربة تعليمية مثمرة`, 'success');
+            }
+        }
+        
+        // عرض رسالة الترحيب بعد تحميل الصفحة
+        setTimeout(showWelcomeMessage, 500);
+    </script>
+</body>
+</html>
+

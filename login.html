@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول | منصة التعليم - الكيمياء</title>
+    <meta name="description" content="سجل دخولك إلى منصة التعليم للكيمياء واستمتع بتجربة تعليمية متميزة">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-page">
+        <div class="form-container">
+            <div class="form-title">تسجيل الدخول</div>
+            
+            <!-- منطقة عرض الرسائل -->
+            <div id="alertArea"></div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username" class="form-label">اسم المستخدم</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        class="form-input" 
+                        placeholder="أدخل اسم المستخدم"
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">كلمة المرور</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-input" 
+                        placeholder="أدخل كلمة المرور"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">دخول</button>
+                </div>
+            </form>
+            
+            <!-- روابط إضافية -->
+            <div class="text-center mt-3">
+                <a href="index.html" style="color: var(--primary-color); text-decoration: none;">
+                    ← العودة إلى الصفحة الرئيسية
+                </a>
+            </div>
+            
+            <!-- معلومات تجريبية للمستخدمين -->
+            <div class="mt-4" style="background-color: var(--background-light); padding: 1.5rem; border-radius: var(--border-radius); color: var(--text-dark);">
+                <h4 style="color: var(--primary-color); margin-bottom: 1rem;">حسابات تجريبية:</h4>
+                
+                <div style="margin-bottom: 1rem;">
+                    <strong>👨‍💼 مدير النظام:</strong><br>
+                    اسم المستخدم: <code>admin</code><br>
+                    كلمة المرور: <code>admin123</code>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <strong>👨‍🎓 طالب:</strong><br>
+                    اسم المستخدم: <code>student1</code><br>
+                    كلمة المرور: <code>student123</code>
+                </div>
+                
+                <div>
+                    <strong>👩‍🎓 طالبة:</strong><br>
+                    اسم المستخدم: <code>student2</code><br>
+                    كلمة المرور: <code>student123</code>
+                </div>
+            </div>
+            
+            <!-- معلومات إضافية -->
+            <div class="mt-3 text-center" style="font-size: 0.9rem; color: var(--text-dark); opacity: 0.7;">
+                <p>هذا موقع تجريبي لأغراض التعليم والتطوير</p>
+                <p>جميع البيانات محفوظة محلياً في متصفحك</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ربط ملف JavaScript -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyDwsAzwMdFerJ8e-ycAYQ1KY_yHQFXdNOc",
+            authDomain: "chemistry-cell-f786f.firebaseapp.com",
+            projectId: "chemistry-cell-f786f",
+            storageBucket: "chemistry-cell-f786f.firebasestorage.app",
+            messagingSenderId: "354762741739",
+            appId: "1:354762741739:web:1aff842ea9902fe4236bae",
+            measurementId: "G-727WVZST21"
+        };
+        const app = initializeApp(firebaseConfig);
+    </script>
+    <script src="script.js"></script>
+    
+    <!-- سكريبت إضافي لصفحة تسجيل الدخول -->
+    <script>
+        // التحقق من حالة تسجيل الدخول عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // إذا كان المستخدم مسجل دخول بالفعل، توجيهه للصفحة المناسبة
+            const currentUser = getCurrentUser();
+            if (currentUser) {
+                showAlert(`مرحباً ${currentUser.name}، أنت مسجل دخول بالفعل`, 'info');
+                setTimeout(() => {
+                    if (currentUser.role === 'admin') {
+                        window.location.href = 'admin.html';
+                    } else {
+                        window.location.href = 'student.html';
+                    }
+                }, 2000);
+            }
+            
+            // تركيز على حقل اسم المستخدم
+            const usernameField = document.getElementById('username');
+            if (usernameField) {
+                usernameField.focus();
+            }
+        });
+        
+        // إضافة مستمع لضغط Enter في حقول النموذج
+        document.getElementById('username').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('password').focus();
+            }
+        });
+        
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+</html>
+
